@@ -72,17 +72,32 @@ public class Camino implements Comparable<Camino>{
 	public void mutacionInversion() {
 		int i = NumeroRandom.randomInt(this.numero_ciudades);
 		int j = NumeroRandom.randomInt(this.numero_ciudades);
-		
+		if (j<i) {
+			int temp = j;
+			j = i;
+			i = temp;
+		}
+		while (i<j) {
+			Integer temporal = ciudades.elementAt(i);
+			ciudades.setElementAt(ciudades.elementAt(j), i);
+			ciudades.setElementAt(temporal, j);
+			i++;
+			j--;
+		}		
 	}
 	
 	// INSERCION
 	public void mutacionInsercion() {
 		int i = NumeroRandom.randomInt(this.numero_ciudades);
 		int j = NumeroRandom.randomInt(this.numero_ciudades);
-		
-		// en la lista de ciudades:
-		// se seleccionan dos posiciones entre 0 y Numero ciudades
-		// se ponen a continuacion a partir de la menor, y se desplazan las posiciones siguientes
+		if (j<i) {
+			int temp = j;
+			j = i;
+			i = temp;
+		}
+		Integer elemento = ciudades.elementAt(j);
+		ciudades.removeElementAt(j);
+		ciudades.insertElementAt(elemento, i+1);
 	}
 	
 
